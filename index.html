@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄钟 · Pomodoro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="app">
+    <header class="header">
+      <div class="logo">
+        <span class="logo__icon" aria-hidden="true">🍅</span>
+        <h1 class="logo__title">番茄钟</h1>
+      </div>
+      <p class="tagline">专注 · 休息 · 循环</p>
+    </header>
+    <section class="timer-card" aria-live="polite">
+      <div class="session-badge" id="sessionBadge">
+        <span class="session-badge__dot"></span>
+        <span id="sessionLabel">专注时间</span>
+      </div>
+      <div class="timer-ring">
+        <svg class="timer-ring__svg" viewBox="0 0 240 240" aria-hidden="true">
+          <circle class="timer-ring__track" cx="120" cy="120" r="108" />
+          <circle class="timer-ring__progress" id="progressCircle" cx="120" cy="120" r="108" />
+        </svg>
+        <div class="timer-ring__content">
+          <time class="timer-display" id="timeDisplay" datetime="PT25M">25:00</time>
+          <p class="timer-subtitle" id="timerSubtitle">准备开始</p>
+        </div>
+      </div>
+      <div class="pomodoro-count">
+        <span class="pomodoro-count__label">番茄进度</span>
+        <div class="pomodoro-dots" id="pomodoroDots"></div>
+        <span class="pomodoro-count__text" id="pomodoroText">0 / 4</span>
+      </div>
+      <div class="controls">
+        <button class="btn btn--ghost" id="resetBtn" type="button" title="重置">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+          <span>重置</span>
+        </button>
+        <button class="btn btn--primary" id="toggleBtn" type="button">
+          <svg class="icon-play" id="iconPlay" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="icon-pause hidden" id="iconPause" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+          </svg>
+          <span id="toggleLabel">开始</span>
+        </button>
+        <button class="btn btn--ghost" id="skipBtn" type="button" title="跳过">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 4l10 8-10 8V4z"/>
+            <line x1="19" y1="5" x2="19" y2="19"/>
+          </svg>
+          <span>跳过</span>
+        </button>
+      </div>
+    </section>
+    <section class="modes" aria-label="会话类型">
+      <button class="mode-btn mode-btn--active" data-mode="focus" type="button">专注</button>
+      <button class="mode-btn" data-mode="shortBreak" type="button">短休息</button>
+      <button class="mode-btn" data-mode="longBreak" type="button">长休息</button>
+    </section>
+    <footer class="footer">
+      <label class="toggle-sound">
+        <input type="checkbox" id="soundToggle" checked>
+        <span class="toggle-sound__track"></span>
+        <span>完成提示音</span>
+      </label>
+    </footer>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
